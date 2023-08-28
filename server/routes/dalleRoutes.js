@@ -27,16 +27,16 @@ router.route('/').post(async (req, res) => {
       response_format: 'b64_json',
     });
 
-    const image = aiResponse.data[0].b64_json;
+    const image = aiResponse.data[0].b64_json
 
     res.status(200).json({ photo: image });
   } catch (error) {
     console.log(error)
-    // if (error?.response && error?.response.data && error?.response.data.error) {
+    if (error?.response && error?.response.data && error?.response.data.error) {
       res.status(500).send(error?.response.data.error.message);
-    // } else {
-    //     res.status(500).send('An error occurred.');
-    // }
+    } else {
+        res.status(500).send('An error occurred.');
+    }
   }
 });
 
