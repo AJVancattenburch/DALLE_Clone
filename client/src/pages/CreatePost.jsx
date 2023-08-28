@@ -43,9 +43,36 @@ const CreatePost = () => {
     }
   }
 
-  const handleSubmit  = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  }
+    if (form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        console.log('Sending request to create post:', form);
+        const res = await fetch('http://localhost:8080/api/v1/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        });
+
+        const data = await res.json();
+        console.log('Response from server:', data);
+
+        navigate('/');
+      } catch (error) {
+        console.error('Error creating post:', error);
+        alert('An error occurred while creating the post.');
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert('Please enter a prompt and generate an image');
+    }
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -78,8 +105,6 @@ const CreatePost = () => {
             placeholder="Enter Name..."
             value={ form.name }
             handleChange={ handleChange }
-            // isSurpriseMe={ false }
-            // handleSurpriseMe={ false }
           />
           <FormField 
             labelName="Prompt"
