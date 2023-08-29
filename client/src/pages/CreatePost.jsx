@@ -15,6 +15,15 @@ const CreatePost = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSurpriseMe = () => {
+    const randomPrompt = getRandomPrompt(form.prompt);
+    setForm({ ...form, prompt: randomPrompt })
+  };
+
   const generateImage = async () => {
     if (form.prompt) {
       try {
@@ -24,11 +33,12 @@ const CreatePost = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ prompt: form.prompt }),
+          body: JSON.stringify({ 
+           prompt: form.prompt 
+          }),
         });
 
         const data = await response.json();
-
         setForm(
           { ...form, photo: `data:image/png;base64, ${ data.photo }`
           }
@@ -41,7 +51,7 @@ const CreatePost = () => {
     } else {
         alert('Please enter a prompt');
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,32 +66,29 @@ const CreatePost = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(form),
+          body: JSON.stringify(
+            { ...form }
+            ),
         });
 
-        const data = await res.json();
-        console.log('Response from server:', data);
+        await res.json();
+        console.log('Response from server:', res.json());
 
-        navigate('/');
+        if (res.ok) {
+          alert('Post created successfully!');
+          navigate('/');
+        }
+
       } catch (error) {
-        console.error('Error creating post:', error);
-        alert('An error occurred while creating the post.');
+          console.error('Error creating post:', error);
+          alert('An error occurred while creating the post.', error);
       } finally {
-        setLoading(false);
+          setLoading(false);
       }
     } else {
-      alert('Please enter a prompt and generate an image');
+        alert('Please enter a prompt and generate an image');
     }
   };
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSurpriseMe = () => {
-    const randomPrompt = getRandomPrompt(form.prompt);
-    setForm({ ...form, prompt: randomPrompt })
-  }
 
   return (
     <section className="max-w-7xl mx-auto">

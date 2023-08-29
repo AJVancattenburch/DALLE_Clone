@@ -1,4 +1,3 @@
-//To set a rule so that ts errors are no longer checked since we are only utilizing js, add the following to tsconfig.json
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
