@@ -64,4 +64,4 @@ server/node_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+DALLE_Clone\server\.env
