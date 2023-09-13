@@ -1,11 +1,14 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "nodemon index.js"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
@@ -18,8 +21,5 @@
     "mongoose": "^7.4.4",
     "nodemon": "^3.0.1",
     "openai": "^4.2.0"
-  },
-  "engines": {
-    "node": ">=14.20.1"
   }
 }
