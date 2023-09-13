@@ -80,3 +80,6 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# dotenv environment variables file
+.env
