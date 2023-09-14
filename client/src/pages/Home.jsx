@@ -11,7 +11,7 @@ const RenderCards = ({ data, title }) => {
   return (
     <h2 className="mt-5 font-bold text-[#6449FF] text-xl uppercase">{ title }</h2>
   )
-  
+
 }
 
 const Home = () => {
