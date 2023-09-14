@@ -27,7 +27,7 @@ const Home = () => {
       setLoading(true);
 
       try {
-        const res = await fetch('https://dalleclone-kmss.onrender.com/api/v1/post', {
+        const res = await fetch('https://dalle-clone-8hpg.onrender.com/api/v1/post', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
