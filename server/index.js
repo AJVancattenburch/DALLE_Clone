@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
 });
 
 const startServer = async () => {
-  const port = process.env.PORT || 5000;
+  const port = process.env.PORT || process.env.DEV_PORT;
   try {
     connectDB(process.env.MONGODB_URL);
     app.listen(port, () =>
