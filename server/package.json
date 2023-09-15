@@ -14,13 +14,13 @@
     "node": ">=14.20.1"
   },
   "dependencies": {
+    "ci-info": "3.8.0",
     "cloudinary": "^1.40.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^7.5.1",
     "nodemon": "^3.0.1",
-    "ci-info": "3.8.0",
-    "openai": "^4.6.0"
+    "openai": "^4.7.0"
   }
 }
