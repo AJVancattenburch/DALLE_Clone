@@ -11,7 +11,7 @@ const RenderCards = ({ data, title }) => {
   return (
     <h2 className="mt-5 font-bold text-[#6449FF] text-xl uppercase">{ title }</h2>
   )
-
+  
 }
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
       setLoading(true);
 
       try {
-        const res = await fetch('https://dalle-clone-8hpg.onrender.com/api/v1/post', {
+        const res = await fetch('http://localhost:8080/api/v1/post', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
